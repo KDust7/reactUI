@@ -279,7 +279,6 @@ function App() {
           id="uploadButton"
           onClick={() => fileInputRef.current && fileInputRef.current.click()}
           ref={buttonRef}
-          ref={buttonRef}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
