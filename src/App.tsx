@@ -277,9 +277,8 @@ function App() {
         <Button
           className="text-center invisible"
           id="uploadButton"
-          onClick={() => 
-            e.preventDefault()
-            fileInputRef.current?.click()}
+          onClick={() => fileInputRef.current && fileInputRef.current.click()}
+          ref={buttonRef}
           ref={buttonRef}
         >
           <svg
