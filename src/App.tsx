@@ -12,9 +12,11 @@ import { Progress } from "@/components/ui/progress-5s";
 import { Separator } from "@/components/ui/separator";
 import { inject } from '@vercel/analytics';
 
-inject();
+
 function App() {
+  inject();
   const form = document.getElementById("uploadForm") as HTMLFormElement;
+  console.log(typeof(form))
   const fr = form ? new FormData(form) : new FormData(form)
   const fileInputRef = useRef<HTMLInputElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
@@ -64,7 +66,7 @@ function App() {
 
         for (let index = 0; index < window.selectedFiles.length; index++) {
           const file = window.selectedFiles[index];
-          fr.append(`file${index}`, file);
+          .append(`file${index}`, file);
         }
       }
     
@@ -73,7 +75,7 @@ function App() {
         "https://reactuiserver.kdust7.repl.co/upload",
         {
           method: "POST",
-          body: fr,
+          body: ,
         },
       );
 
