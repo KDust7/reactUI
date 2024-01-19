@@ -47,7 +47,7 @@ function App() {
     }
   }
 
-  async function functionbetter(e: React.ChangeEvent<HTMLInputElement>) {
+  async function functionbetter() {
     console.log(window.selectedFiles);
 
     if (window.selectedFiles && window.selectedFiles.length > 0) {
@@ -56,23 +56,24 @@ function App() {
       const form = document.getElementById("uploadForm") as HTMLFormElement;
 
       if (form) {
-        const formData = new FormData(form);
+        const fr = new FormData(form);
 
         for (let index = 0; index < window.selectedFiles.length; index++) {
           const file = window.selectedFiles[index];
-          formData.append(`file${index}`, file);
+          fr.append(`file${index}`, file);
         }
       }
-
+    
       try {
-        const response = await fetch(
-          "https://reactuiserver.kdust7.repl.co/upload",
-          {
-            method: "POST",
-            body: formData,
-          },
-        );
+      const response = await fetch(
+        "https://reactuiserver.kdust7.repl.co/upload",
+        {
+          method: "POST",
+          body: fr,
+        },
+      );
 
+    
         console.log("Server response:", await response.json());
       } catch (error) {
         console.error("Error uploading files:", error);
