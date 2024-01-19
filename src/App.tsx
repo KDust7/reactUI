@@ -10,7 +10,9 @@ import { ThemeProvider, useTheme } from "@/components/theme-provider";
 import { ModeToggle } from "@/components/mode-toggle";
 import { Progress } from "@/components/ui/progress-5s";
 import { Separator } from "@/components/ui/separator";
+import { inject } from '@vercel/analytics';
 
+inject();
 function App() {
   const form = document.getElementById("uploadForm") as HTMLFormElement;
   const fr = form ? new FormData(form) : new FormData(form)
