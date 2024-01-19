@@ -12,6 +12,8 @@ import { Progress } from "@/components/ui/progress-5s";
 import { Separator } from "@/components/ui/separator";
 
 function App() {
+  const form = document.getElementById("uploadForm") as HTMLFormElement;
+  const fr = new FormData(form);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const { theme } = useTheme();
@@ -53,27 +55,22 @@ function App() {
     if (window.selectedFiles && window.selectedFiles.length > 0) {
       console.log("Files selected:", window.selectedFiles);
 
-      const form = document.getElementById("uploadForm") as HTMLFormElement;
-
       if (form) {
-        const fr = new FormData(form);
-
         for (let index = 0; index < window.selectedFiles.length; index++) {
           const file = window.selectedFiles[index];
           fr.append(`file${index}`, file);
         }
       }
-    
-      try {
-      const response = await fetch(
-        "https://reactuiserver.kdust7.repl.co/upload",
-        {
-          method: "POST",
-          body: fr,
-        },
-      );
 
-    
+      try {
+        const response = await fetch(
+          "https://reactuiserver.kdust7.repl.co/upload",
+          {
+            method: "POST",
+            body: fr,
+          },
+        );
+
         console.log("Server response:", await response.json());
       } catch (error) {
         console.error("Error uploading files:", error);
