@@ -23,7 +23,7 @@ function App() {
   inject();
   const form = document.getElementById("uploadForm") as HTMLFormElement;
   console.log(typeof(form))
-  const fr = form ? new FormData(form) : new FormData(form)
+  
   const fileInputRef = useRef<HTMLInputElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const { theme } = useTheme();
