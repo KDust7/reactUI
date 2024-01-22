@@ -29,65 +29,7 @@ function App() {
   const [uploadedFiles, setUploadedFiles] = useState<File[]>([]);
   const [buttonTextUpdated, setButtonTextUpdated] = useState(false);
 
-  function handleFileUpload(e: React.ChangeEvent<HTMLInputElement>) {
-    if (e.target && e.target.files) {
-      window.selectedFiles = e.target.files;
-      console.log(e);
-
-      setUploadedFiles((prevFiles) => [
-        ...prevFiles,
-        ...Array.from(window.selectedFiles),
-      ]);
-
-      if (window.selectedFiles.length > 0) {
-        console.log("Files selected:", window.selectedFiles);
-
-        Array.from(window.selectedFiles).forEach((file) => {
-          const reader = new FileReader();
-          reader.onload = (e) => {
-            console.log("File content:", e.target!.result);
-          };
-          reader.readAsText(file);
-        });
-      }
-    }
-  }
-
-  async function functionbetter() {
-    console.log(window.selectedFiles);
-
-    if (window.selectedFiles && window.selectedFiles.length > 0) {
-      console.log("Files selected:", window.selectedFiles);
-
-      
-
-      if (form) {
-        
-
-        for (let index = 0; index < window.selectedFiles.length; index++) {
-          const file = window.selectedFiles[index];
-          .append(`file${index}`, file);
-        }
-      }
-    
-      try {
-      const response = await fetch(
-        "https://reactuiserver.kdust7.repl.co/upload",
-        {
-          method: "POST",
-          body: ,
-        },
-      );
-
-    
-        console.log("Server response:", await response.json());
-      } catch (error) {
-        console.error("Error uploading files:", error);
-      }
-    } else {
-      console.log("No files selected, according to code. Error.");
-    }
-  }
+  
 
   useEffect(() => {
     function setInitialColor() {
