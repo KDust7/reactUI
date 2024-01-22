@@ -14,6 +14,12 @@ import { inject } from '@vercel/analytics';
 
 
 function App() {
+  function functionbetter(){
+    alert("function better trig")
+  }
+  function handleFileUpload(){
+    alert("function handleFileUpload trig")
+  }
   inject();
   const form = document.getElementById("uploadForm") as HTMLFormElement;
   console.log(typeof(form))
